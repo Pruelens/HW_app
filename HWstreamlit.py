@@ -204,7 +204,7 @@ def app():
     st.header("Explore Hardy-weinberg Equilibrium")
 
     # Define the input fields
-    start_p_A = st.slider("Allele frequency for locus 1 (p)", min_value=0.0, max_value=1.0, step=0.01, value=0.5)
+    start_p_A = st.slider("Allele frequency A (p)", min_value=0.0, max_value=1.0, step=0.01, value=0.5)
 
     N = st.slider("Population size (N)", min_value=10, max_value=1000, step=10, value=100)
     
