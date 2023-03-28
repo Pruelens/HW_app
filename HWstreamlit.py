@@ -201,7 +201,7 @@ def simulate_HW_twolocus(pop_size, generations, start_p_A, W_genotypes_Aa, W_gen
 # Define the Streamlit app
 def app():
     # Define the app header
-    st.header("Explore Hardy_weinberg Equilibrium")
+    st.header("Explore Hardy-weinberg Equilibrium")
 
     # Define the input fields
     start_p_A = st.slider("Allele frequency for locus 1 (p)", min_value=0.0, max_value=1.0, step=0.01, value=0.5)
