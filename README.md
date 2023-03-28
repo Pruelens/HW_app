@@ -1,6 +1,7 @@
 # Explore Hardy-Weinberg principles
- 
- This app can be accessed using the following link:  
+For more information, see [Population Genetics Notebook on Hardy-Weinberg equilibrium](https://github.com/Pruelens/Models_In_Biology/blob/main/PopulationGeneticsHardyWeinberg.ipynb)  
+
+This app can be accessed using the following link:  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Streamlit Link](https://pruelens-hw-app-hwstreamlit-iyf2kb.streamlit.app/)
     
   
