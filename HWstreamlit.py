@@ -226,8 +226,6 @@ def app():
     link_AB = st.checkbox('Link loci A and B at the start?')
     col1, col2, col3 = st.columns(3)
 
-
-
     st.markdown('#')
     
     with col1:
