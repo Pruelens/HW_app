@@ -207,6 +207,14 @@ def app():
     # Define the app header
     st.header("Explore Hardy-weinberg Equilibrium")
 
+    st.text('This is a simulation app that models the evolution of two loci. \\
+            It uses a Wright-Fisher model, where a population is randomly mated for a given number of generations. \\
+            The app allows you to set various parameters such as population size, the starting allele frequencies of the A locus, \\
+            fitness values for each genotype, migration rate, mutation rate, and recombination rate. The app then generates \\
+            a plot of the frequencies of the different genotypes over the number of generations specified. \\
+            This app can be used to understand how genetic drift, mutation, and selection affect the evolution of populations over time.')
+
+
     # Define the input fields
     start_p_A = st.slider("Allele frequency A (p)", min_value=0.0, max_value=1.0, step=0.01, value=0.5)
 
@@ -217,6 +225,8 @@ def app():
 
     link_AB = st.checkbox('Link loci A and B at the start?')
 
+    st.markdown('#')
+    st.text('Set to fitness values of each locus separately. Final fitness is the average fitness of A and B genotype.')
     with col1:
         W_AA = st.number_input('Fitness AA',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
         W_BB = st.number_input('Fitness BB',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
