@@ -221,12 +221,15 @@ def app():
     N = st.slider("Population size (N)", min_value=10, max_value=1000, step=10, value=100)
     
     generations = st.slider("Generations", min_value=10, max_value=1000, step=10, value=100)
+
+    st.markdown('Set to fitness values of each locus separately. Final fitness is the average fitness of A and B genotype.')
+    link_AB = st.checkbox('Link loci A and B at the start?')
     col1, col2, col3 = st.columns(3)
 
-    link_AB = st.checkbox('Link loci A and B at the start?')
+
 
     st.markdown('#')
-    st.text('Set to fitness values of each locus separately. Final fitness is the average fitness of A and B genotype.')
+    
     with col1:
         W_AA = st.number_input('Fitness AA',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
         W_BB = st.number_input('Fitness BB',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
