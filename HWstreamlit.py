@@ -20,12 +20,7 @@ def simulate_HW_twolocus(pop_size, generations, start_p_A, link_AB, W_genotypes_
     _weight_A = [p_A*p_A, 2*p_A*(1-p_A), (1-p_A)**2]  # calculate genotype frequencies based on allele frequency
     _weight_B = [p_B*p_B, 2*p_B*(1-p_B), (1-p_B)**2]  # calculate genotype frequencies based on allele frequency
     
-    if link_AB == False:
-        Population = random.choices(genotypes_linked,weights = _weight_A, k = pop_size)
-    else:
-        Population_A = random.choices(genotypes,weights = _weight_A, k = pop_size)  
-        Population_B = random.choices(genotypes_2,weights = _weight_B, k = pop_size)
-        Population = [list(a) for a in zip(Population_A, Population_B)]
+
 
     nr_replicates = 5
 
@@ -47,7 +42,12 @@ def simulate_HW_twolocus(pop_size, generations, start_p_A, link_AB, W_genotypes_
     K = pop_size                     # carying capacity'
 
     for repl in range(nr_replicates):
-
+        if link_AB == False:
+            Population = random.choices(genotypes_linked,weights = _weight_A, k = pop_size)
+        else:
+            Population_A = random.choices(genotypes,weights = _weight_A, k = pop_size)  
+            Population_B = random.choices(genotypes_2,weights = _weight_B, k = pop_size)
+            Population = [list(a) for a in zip(Population_A, Population_B)]
         
         if (len(Population)%2) == 0:
             pass
