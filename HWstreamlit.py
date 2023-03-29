@@ -26,12 +26,13 @@ def simulate_HW_twolocus(pop_size, generations, start_p_A, link_AB, W_genotypes_
         Population_A = random.choices(genotypes,weights = _weight_A, k = pop_size)  
         Population_B = random.choices(genotypes_2,weights = _weight_B, k = pop_size)
         Population = [list(a) for a in zip(Population_A, Population_B)]
+
     nr_replicates = 5
 
     migration_pop_structure = ([1, 1, 1],[1, 1, 1]) #Probability of 'AA','Aa','aa' in the source population
     Population_A_out = random.choices(genotypes,weights = migration_pop_structure[0], k = pop_size)  
     Population_B_out = random.choices(genotypes_2,weights = migration_pop_structure[1], k = pop_size)
-    Population_outside = [list(a) for a in zip(Population_A, Population_B)]
+    Population_outside = [list(a) for a in zip(Population_A_out, Population_B_out)]
 
     progress_text = "Simulation in progress. Please wait."
     my_bar = st.progress(0, text=progress_text)
