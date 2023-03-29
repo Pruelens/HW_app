@@ -42,7 +42,7 @@ def simulate_HW_twolocus(pop_size, generations, start_p_A, link_AB, W_genotypes_
     K = pop_size                     # carying capacity'
 
     for repl in range(nr_replicates):
-        if link_AB == False:
+        if link_AB == True:
             Population = random.choices(genotypes_linked,weights = _weight_A, k = pop_size)
         else:
             Population_A = random.choices(genotypes,weights = _weight_A, k = pop_size)  
@@ -215,7 +215,7 @@ def app():
     generations = st.slider("Generations", min_value=10, max_value=1000, step=10, value=100)
     col1, col2, col3 = st.columns(3)
 
-    link_AB = st.checkbox('Link loci A and B')
+    link_AB = st.checkbox('Link loci A and B at the start?')
 
     with col1:
         W_AA = st.number_input('Fitness AA',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
