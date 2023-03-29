@@ -219,15 +219,15 @@ def app():
 
     with col1:
         W_AA = st.number_input('Fitness AA',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
-        #W_BB = st.number_input('Fitness BB',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
+        W_BB = st.number_input('Fitness BB',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
 
     with col2:
         W_Aa = st.number_input('Fitness Aa',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
-        #W_Bb = st.number_input('Fitness Bb',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
+        W_Bb = st.number_input('Fitness Bb',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
 
     with col3:
         W_aa = st.number_input('Fitness aa',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
-        #W_bb = st.number_input('Fitness bb',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
+        W_bb = st.number_input('Fitness bb',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
 
     col1_2, col2_2, = st.columns(2)
     with col1_2:
