@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-def simulate_HW_twolocus(pop_size, generations, start_p_A, W_genotypes_Aa, W_genotypes_Bb,mig_rate, mu_rate,rec_rate):
+def simulate_HW_twolocus(pop_size, generations, start_p_A, link_AB, W_genotypes_Aa, W_genotypes_Bb,mig_rate, mu_rate,rec_rate):
     # Set initial parameters
     pop_size = pop_size              # population size
     genotypes = ['AA','Aa','aa']     # possible genotypes in the population
@@ -20,9 +20,12 @@ def simulate_HW_twolocus(pop_size, generations, start_p_A, W_genotypes_Aa, W_gen
     _weight_A = [p_A*p_A, 2*p_A*(1-p_A), (1-p_A)**2]  # calculate genotype frequencies based on allele frequency
     _weight_B = [p_B*p_B, 2*p_B*(1-p_B), (1-p_B)**2]  # calculate genotype frequencies based on allele frequency
     
-    Population_A = random.choices(genotypes,weights = _weight_A, k = pop_size)  
-    Population_B = random.choices(genotypes_2,weights = _weight_B, k = pop_size)
-    Population = [list(a) for a in zip(Population_A, Population_B)]
+    if link_AB == False:
+        Population = random.choices(genotypes_linked,weights = _weight_A, k = pop_size)
+    else:
+        Population_A = random.choices(genotypes,weights = _weight_A, k = pop_size)  
+        Population_B = random.choices(genotypes_2,weights = _weight_B, k = pop_size)
+        Population = [list(a) for a in zip(Population_A, Population_B)]
     nr_replicates = 5
 
     migration_pop_structure = ([1, 1, 1],[1, 1, 1]) #Probability of 'AA','Aa','aa' in the source population
@@ -44,7 +47,7 @@ def simulate_HW_twolocus(pop_size, generations, start_p_A, W_genotypes_Aa, W_gen
 
     for repl in range(nr_replicates):
 
-        Population = [list(a) for a in zip(Population_A, Population_B)]
+        
         if (len(Population)%2) == 0:
             pass
         else:
@@ -211,6 +214,8 @@ def app():
     generations = st.slider("Generations", min_value=10, max_value=1000, step=10, value=100)
     col1, col2, col3 = st.columns(3)
 
+    link_AB = st.checkbox('Link loci A and B')
+
     with col1:
         W_AA = st.number_input('Fitness AA',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
         #W_BB = st.number_input('Fitness BB',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
@@ -237,7 +242,7 @@ def app():
     # Run the simulation
 
     if st.button('Run Simulation'):
-        data = simulate_HW_twolocus(N, generations, start_p_A, W_genotypes_Aa, W_genotypes_Bb,mig_rate, mu_rate,rec_rate)
+        data = simulate_HW_twolocus(N, generations, start_p_A, link_AB, W_genotypes_Aa, W_genotypes_Bb,mig_rate, mu_rate,rec_rate)
 
         # Show the results
         st.subheader("Simulation Results")
@@ -254,13 +259,13 @@ def app():
 
         tab1, tab2 = st.tabs(["Allele Frequencies", "Genotype Frequencies"])
         with tab1:
-            st.plotly_chart(fig_allele_A, use_container_width=False, sharing="streamlit", theme="streamlit")
+
             tab1_1, tab1_2 = st.tabs(["Allele A", "Allele B"])
             with tab1_1:
                 st.plotly_chart(fig_allele_A, use_container_width=False, sharing="streamlit", theme="streamlit")
             with tab1_2:
                 st.plotly_chart(fig_allele_B, use_container_width=False, sharing="streamlit", theme="streamlit")
-                
+
         with tab2:
             tab2_1, tab2_2, tab2_3 = st.tabs(["Frequency AA", "Frequency Aa","Frequency aa"])
             with tab2_1:
