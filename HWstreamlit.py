@@ -267,7 +267,8 @@ def app():
                 st.plotly_chart(fig_allele_B, use_container_width=False, sharing="streamlit", theme="streamlit")
 
         with tab2:
-            tab2_1, tab2_2, tab2_3 = st.tabs(["Frequency AA", "Frequency Aa","Frequency aa"])
+            tab2_1, tab2_2, tab2_3,tab2_4, tab2_5, tab2_6 = st.tabs(["Frequency AA", "Frequency Aa","Frequency aa",
+                                              "Frequency BB", "Frequency Bb","Frequency bb"])
             with tab2_1:
                 fig_AA = px.line(data, x="gen", y="freq_AA", color='Replicate', 
                         range_y=[0,1], range_x=[0,generations])
@@ -284,7 +285,21 @@ def app():
                 fig_aa.update_layout(xaxis_title="Generations",yaxis_title='Frequency aa', showlegend=False)
                 st.plotly_chart(fig_aa, use_container_width=False, sharing="streamlit", theme="streamlit")
 
-
+            with tab2_4:
+                fig_BB = px.line(data, x="gen", y="freq_BB", color='Replicate', 
+                        range_y=[0,1], range_x=[0,generations])
+                fig_BB.update_layout(xaxis_title="Generations",yaxis_title='Frequency BB', showlegend=False)
+                st.plotly_chart(fig_BB, use_container_width=False, sharing="streamlit", theme="streamlit")
+            with tab2_5:
+                fig_Bb = px.line(data, x="gen", y="freq_Bb", color='Replicate', 
+                        range_y=[0,1], range_x=[0,generations])
+                fig_Bb.update_layout(xaxis_title="Generations",yaxis_title='Frequency Bb', showlegend=False)
+                st.plotly_chart(fig_Bb, use_container_width=False, sharing="streamlit", theme="streamlit")
+            with tab2_6:
+                fig_bb = px.line(data, x="gen", y="freq_bb", color='Replicate',
+                        range_y=[0,1], range_x=[0,generations])
+                fig_bb.update_layout(xaxis_title="Generations",yaxis_title='Frequency bb', showlegend=False)
+                st.plotly_chart(fig_bb, use_container_width=False, sharing="streamlit", theme="streamlit")
 
 
 app()
