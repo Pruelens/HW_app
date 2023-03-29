@@ -229,17 +229,16 @@ def app():
         W_aa = st.number_input('Fitness aa',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
         W_bb = st.number_input('Fitness bb',min_value=0.00, max_value=1.00, value=1.00, step=0.05)
 
-    col1_2, col2_2, = st.columns(2)
+    col1_2, col2_2,col2_3 = st.columns(3)
     with col1_2:
         mig_rate = st.number_input('Migration rate',min_value=0.00, max_value=1.00, value=0.00, step=0.05)
     with col2_2:
         mu_rate = st.number_input('Mutation rate',min_value=0.00, max_value=1.00, value=0.00, step=0.05)  
-
+    with col2_3:
+        rec_rate = st.number_input('Recombination rate',min_value=0.00, max_value=1.00, value=0.00, step=0.05)  
     W_genotypes_Aa = [W_AA, W_Aa, W_aa]
     W_genotypes_Bb = [1, 1, 1]
 
-
-    rec_rate = 0
     # Run the simulation
 
     if st.button('Run Simulation'):
