@@ -243,15 +243,24 @@ def app():
         st.subheader("Simulation Results")
         #st.write(f"Genotype frequencies: ")
 
-        fig_allele = px.line(data, x="gen", y="freq_A", color='Replicate', 
+        fig_allele_A = px.line(data, x="gen", y="freq_A", color='Replicate', 
                     range_y=[0,1], range_x=[0,generations])
-        fig_allele.update_layout(xaxis_title="Generations",yaxis_title='Allele Frequency A', showlegend=False)
+        fig_allele_A.update_layout(xaxis_title="Generations",yaxis_title='Allele Frequency A', showlegend=False)
 
+        fig_allele_B = px.line(data, x="gen", y="freq_B", color='Replicate', 
+                    range_y=[0,1], range_x=[0,generations])
+        fig_allele_B.update_layout(xaxis_title="Generations",yaxis_title='Allele Frequency B', showlegend=False)
 
 
         tab1, tab2 = st.tabs(["Allele Frequencies", "Genotype Frequencies"])
         with tab1:
-            st.plotly_chart(fig_allele, use_container_width=False, sharing="streamlit", theme="streamlit")
+            st.plotly_chart(fig_allele_A, use_container_width=False, sharing="streamlit", theme="streamlit")
+            tab1_1, tab1_2 = st.tabs(["Allele A", "Allele B"])
+            with tab1_1:
+                st.plotly_chart(fig_allele_A, use_container_width=False, sharing="streamlit", theme="streamlit")
+            with tab1_2:
+                st.plotly_chart(fig_allele_B, use_container_width=False, sharing="streamlit", theme="streamlit")
+                
         with tab2:
             tab2_1, tab2_2, tab2_3 = st.tabs(["Frequency AA", "Frequency Aa","Frequency aa"])
             with tab2_1:
