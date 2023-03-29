@@ -237,7 +237,7 @@ def app():
     with col2_3:
         rec_rate = st.number_input('Recombination rate',min_value=0.00, max_value=1.00, value=0.00, step=0.05)  
     W_genotypes_Aa = [W_AA, W_Aa, W_aa]
-    W_genotypes_Bb = [1, 1, 1]
+    W_genotypes_Bb = [W_BB, W_Bb, W_bb]
 
     # Run the simulation
 
