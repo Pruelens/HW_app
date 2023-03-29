@@ -207,7 +207,7 @@ def app():
     # Define the app header
     st.header("Explore Hardy-weinberg Equilibrium")
 
-    st.text('This is a simulation app that models the evolution of two loci. '
+    st.markdown('This is a simulation app that models the evolution of two loci. '
             'It uses a Wright-Fisher model, where a population is randomly mated for a given number of generations. '
             'The app allows you to set various parameters such as population size, the starting allele frequencies of the A locus, '
             'fitness values for each genotype, migration rate, mutation rate, and recombination rate. The app then generates '
